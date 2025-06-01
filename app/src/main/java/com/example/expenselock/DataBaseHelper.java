@@ -15,8 +15,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table expense (id INTEGER PRIMARY KEY AUTOINCREMENT,amount DOUBLE,reason TEXT,time DOUBLE)");
-        db.execSQL("create table income( id INTEGER PRIMARY KEY AUTOINCREMENT,amount DOUBLE,reason TEXT,time DOUBLE)");
+        db.execSQL("create table expense (id INTEGER PRIMARY KEY AUTOINCREMENT,amount DOUBLE,type TEXT,reason TEXT)");
+        db.execSQL("create table income( id INTEGER PRIMARY KEY AUTOINCREMENT,amount DOUBLE,reason TEXT,reason TEXT)");
 
     }
 

@@ -430,75 +430,33 @@
 
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                app:cardElevation="3dp"
-                app:cardCornerRadius="6dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="40dp"
-                android:layout_below="@id/card3"
-                >
 
-                <TextView
-                    android:id="@+id/expense"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Expense+"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    />
-            </androidx.cardview.widget.CardView>
 
 
             <androidx.cardview.widget.CardView
-                android:layout_width="100dp"
-                android:layout_height="50dp"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 app:cardElevation="3dp"
-                app:cardCornerRadius="6dp"
+                app:cardCornerRadius="45dp"
                 android:layout_below="@id/card3"
                 android:layout_centerInParent="true"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="35dp"
                 >
 
 
-                <TextView
-                    android:id="@+id/income"
+                <ImageView
+                    android:id="@+id/add"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Income+"
-                    android:textSize="20sp"
-                    android:gravity="center"
+                    android:src="@drawable/plus"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground"
                     />
+
+
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="100dp"
-                android:layout_height="50dp"
-                app:cardElevation="3dp"
-                app:cardCornerRadius="6dp"
-                android:layout_below="@id/card3"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="25sp"
-                android:layout_marginTop="40dp"
-                >
 
-
-                <TextView
-                    android:id="@+id/savings"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="Savings+"
-                    android:textSize="20sp"
-                    android:gravity="center"
-                    android:clickable="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    />
-            </androidx.cardview.widget.CardView>
 
 
 

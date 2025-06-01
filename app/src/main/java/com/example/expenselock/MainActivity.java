@@ -8,6 +8,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
     MaterialToolbar toolbar;
     NavigationView navigationview;
     TextView tvexpense, tvincome, totalincome, totalexpense,income,expense;
+    ImageView add;
     DataBaseHelper dbhelper;
 
     @Override
@@ -45,20 +47,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#ffffff"));
-        }
-        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
+        }WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
                 .setAppearanceLightStatusBars(true);
         setContentView(R.layout.activity_main);
+        add=findViewById(R.id.add);
         tvexpense = findViewById(R.id.tvexpense);
         tvincome = findViewById(R.id.tvincome);
-        income=findViewById(R.id.income);
-        expense=findViewById(R.id.expense);
         drawer_layout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         navigationview = findViewById(R.id.navigationview);
         dbhelper = new DataBaseHelper(this);
 
-        income.setOnClickListener(new View.OnClickListener() {
+        add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
