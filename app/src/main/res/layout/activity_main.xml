@@ -58,13 +58,13 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="25dp"
                 android:layout_below="@id/mainbalance"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 />
             <TextView
                 android:id="@+id/tvshopping"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shopping: 2000"
+                android:text="Shopping: "
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
@@ -76,7 +76,7 @@
                 android:id="@+id/tvfood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Food: 2000"
+                android:text="Food: "
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
@@ -87,7 +87,7 @@
                 android:id="@+id/tvtravel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="travel: 1500"
+                android:text="travel: "
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
@@ -95,10 +95,10 @@
                 android:layout_marginRight="25dp"
                 />
             <TextView
-                android:id="@+id/tvbajar"
+                android:id="@+id/tvhome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home: 5000"
+                android:text="Home: "
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
@@ -109,11 +109,23 @@
                 android:id="@+id/tvpersonal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="personal: 2000"
+                android:text="personal: "
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/tvbajar"
+                android:layout_below="@id/tvhome"
+                android:layout_marginRight="25dp"
+                />
+
+            <TextView
+                android:id="@+id/tvexpensedue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Due: "
+                android:textSize="12sp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tvpersonal"
                 android:layout_marginRight="25dp"
                 />
 
@@ -121,11 +133,11 @@
                 android:id="@+id/tvtotalexpense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Expense: 12500"
+                android:text="Total Expense: "
                 android:textSize="14sp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/tvpersonal"
+                android:layout_below="@id/tvexpensedue"
                 android:layout_marginRight="25dp"
                 />
 
@@ -216,33 +228,44 @@
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@id/mainbalance"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 />
             <TextView
                 android:id="@+id/tvsalary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Salary: 17000"
+                android:text="Salary: "
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
                 android:layout_below="@id/tvincome"
                 />
+
+            <TextView
+                android:id="@+id/tvTada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="T a d a: "
+                android:textSize="12sp"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:layout_below="@id/tvsalary"
+                />
             <TextView
                 android:id="@+id/tvbusiness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Business: 40000"
+                android:text="Business: "
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
-                android:layout_below="@id/tvsalary"
+                android:layout_below="@id/tvTada"
                 android:layout_marginLeft="25dp"
                 />
             <TextView
                 android:id="@+id/tvincentive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Incentive: 1750"
+                android:text="Incentive: "
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
                 android:layout_below="@id/tvbusiness"
@@ -253,7 +276,7 @@
                 android:id="@+id/tvextra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Extra: 1500"
+                android:text="Extra: "
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
                 android:layout_below="@id/tvincentive"
@@ -261,10 +284,10 @@
                 />
 
             <TextView
-                android:id="@+id/tvdue"
+                android:id="@+id/tvincomedue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Due: 1500"
+                android:text="Due: "
                 android:textSize="12sp"
                 android:layout_centerVertical="true"
                 android:layout_below="@id/tvextra"
@@ -272,13 +295,13 @@
                 />
 
             <TextView
-                android:id="@+id/totalincome"
+                android:id="@+id/tvtotalincome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Income: 60150"
+                android:text="Total Income: "
                 android:textSize="14sp"
                 android:layout_centerVertical="true"
-                android:layout_below="@id/tvdue"
+                android:layout_below="@id/tvincomedue"
                 android:layout_marginLeft="25dp"
                 />
 
@@ -288,7 +311,7 @@
                 android:layout_height="wrap_content"
                 android:text="Savings"
                 android:textSize="18sp"
-                android:layout_below="@id/totalincome"
+                android:layout_below="@id/tvtotalincome"
                 android:layout_marginTop="35dp"
                 android:layout_marginLeft="190dp"
                 />
@@ -329,7 +352,7 @@
                 app:cardElevation="3dp"
                 app:cardCornerRadius="6dp"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@id/totalincome"
+                android:layout_below="@id/tvtotalincome"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="35sp"
                 >
@@ -420,7 +443,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="50000"
+                    android:hint="0.0"
                     android:textSize="17sp"
                     android:gravity="center"
                     android:layout_marginTop="20dp"

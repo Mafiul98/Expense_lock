@@ -38,9 +38,11 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer_layout;
     MaterialToolbar toolbar;
     NavigationView navigationview;
-    TextView tvexpense, tvincome, totalincome, totalexpense,income,expense;
+    TextView tvexpense, tvincome, tvtotalincome,income,expense,tvtotalexpense,tvsavingvalue;
     ImageView add;
     DataBaseHelper dbhelper;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity {
         add=findViewById(R.id.add);
         tvexpense = findViewById(R.id.tvexpense);
         tvincome = findViewById(R.id.tvincome);
+        tvtotalexpense=findViewById(R.id.tvtotalexpense);
+        tvtotalincome=findViewById(R.id.tvtotalincome);
+        tvsavingvalue=findViewById(R.id.tvsavingvalue);
         drawer_layout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         navigationview = findViewById(R.id.navigationview);
@@ -66,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+
 
 
 
@@ -95,6 +102,25 @@ public class MainActivity extends AppCompatActivity {
         });
 //==============================NavigationView End==================================================
 
+        updateui();
+
     }
 
+    public void updateui(){
+
+        if (dbhelper.getTotalIncome()>0){
+            tvtotalincome.setText("Total Income: "+dbhelper.getTotalIncome());
+        } else if (dbhelper.getTotalExpense()>0) {
+            tvtotalexpense.setText("Total Expense: "+dbhelper.getTotalExpense());
+        }else {
+            tvsavingvalue.setText(""+dbhelper.getTotalsavings());
+        }
+
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        updateui();
+    }
 }

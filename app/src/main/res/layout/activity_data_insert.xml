@@ -11,52 +11,57 @@
     android:padding="15dp"
     >
 
-
-    <LinearLayout
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="35dp"
         >
 
-        <ImageView
-            android:id="@+id/backbutton"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/back"
-            android:layout_marginTop="8dp"
-            android:contentDescription="Back"
-            android:clickable="true"
-            android:foreground="?attr/selectableItemBackground"
-            />
-
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Insert Data"
-            android:textSize="20sp"
-            android:textColor="#B6000000"
-            android:layout_marginTop="8dp"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:elevation="3dp"
+            >
+
+            <ImageView
+                android:id="@+id/backbutton"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/back"
+                android:contentDescription="Back"
+                android:clickable="true"
+                android:foreground="?attr/selectableItemBackground"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Insert Data"
+                android:textSize="20sp"
+                android:textColor="#B6000000"
+                android:layout_marginStart="20dp"
+                />
 
 
-    </LinearLayout>
+        </LinearLayout>
 
+
+    </androidx.cardview.widget.CardView>
 
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="57dp"
         app:startIconTint="@color/gray2"
         app:boxStrokeColor="@color/black"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/amount"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:hint="Amount"
             android:inputType="number"
             />
@@ -66,19 +71,21 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="57dp"
         android:hint="Type"
         app:endIconMode="dropdown_menu"
         app:startIconTint="@color/gray2"
         app:boxStrokeColor="@color/black"
         app:boxBackgroundColor="#ffffff"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="5dp"
+        >
 
 
         <AutoCompleteTextView
             android:id="@+id/typeSpinner"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="match_parent"
             android:inputType="none"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
@@ -89,22 +96,42 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="57dp"
         android:hint="Reason"
         app:endIconMode="dropdown_menu"
         app:startIconTint="@color/gray2"
         app:boxStrokeColor="@color/black"
         app:boxBackgroundColor="#ffffff"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginTop="5dp"
+        >
 
 
         <AutoCompleteTextView
             android:id="@+id/reasonSpinner"
             android:layout_width="match_parent"
-            android:layout_height="55dp"
+            android:layout_height="match_parent"
             android:inputType="none"
             android:paddingStart="12dp"
             android:paddingEnd="12dp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout4"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        app:startIconTint="@color/gray2"
+        app:boxStrokeColor="@color/black"
+        android:layout_marginTop="5dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/addnote"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:hint="Add note..."
+            android:inputType="text"
             />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,7 +148,7 @@
             android:layout_height="match_parent"
             android:text="Save"
             android:textColor="#91000000"
-            android:textSize="25dp"
+            android:textSize="25sp"
             android:gravity="center"
            android:background="#ffffff"
             android:clickable="true"

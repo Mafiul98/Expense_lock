@@ -6,6 +6,7 @@ import static android.view.View.VISIBLE;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -20,14 +21,18 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class Data_Insert extends AppCompatActivity {
 
-    AutoCompleteTextView reasonSpinner,typeSpinner;
+    TextInputEditText amount,addnote;
+    AutoCompleteTextView typeSpinner,reasonSpinner;
     TextInputLayout layout3;
     TextView savebutton;
     ImageView backbutton;
+    public static boolean EXPENSE_LOCK= true;
+    DataBaseHelper dbhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +48,41 @@ public class Data_Insert extends AppCompatActivity {
         layout3=findViewById(R.id.layout3);
         savebutton=findViewById(R.id.savebutton);
         backbutton=findViewById(R.id.backbutton);
+        addnote=findViewById(R.id.addnote);
+        amount=findViewById(R.id.amount);
+        dbhelper =  new DataBaseHelper(this);
 
 
+        savebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String value = amount.getText().toString();
+                String type = typeSpinner.getText().toString();
+                String reason = reasonSpinner.getText().toString();
+                String note = addnote.getText().toString();
+                double amount1 = Double.parseDouble(value);
+
+                if (type.equals("Income")){
+                    dbhelper.addIncome(amount1,type,reason,note);
+                } else if (type.equals("Expense")) {
+                    dbhelper.addExpense(amount1,type,reason,note);
+                }else {
+                    dbhelper.addsavings(amount1);
+                }
+
+
+                typeSpinner.setText("");
+                reasonSpinner.setText("");
+                addnote.setText("");
+                amount.setText("");
+
+
+
+
+
+            }
+        });
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,10 +91,11 @@ public class Data_Insert extends AppCompatActivity {
             }
         });
 
+
 //===============================Spinner Start======================================================
         String[] types = {"Income","Expense","Savings"};
-        String[] reasons1 = {"","Salary", "Business", "Incentive", "Extra", "Due"};
-        String[] reasons2 = {"","Shopping", "Food", "Travel", "Home", "Personal"};
+        String[] reasons1 = {"","Salary","T a d a", "Business", "Incentive", "Extra", "Due"};
+        String[] reasons2 = {"","Shopping", "Food", "Travel", "Home", "Personal","Due"};
 
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(
                 this,
