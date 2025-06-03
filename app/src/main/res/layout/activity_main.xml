@@ -441,6 +441,7 @@
                     />
 
                 <TextView
+                    android:id="@+id/tvmainbalance"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:hint="0.0"

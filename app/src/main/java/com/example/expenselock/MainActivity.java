@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer_layout;
     MaterialToolbar toolbar;
     NavigationView navigationview;
-    TextView tvexpense, tvincome, tvtotalincome,income,expense,tvtotalexpense,tvsavingvalue;
+    TextView tvexpense, tvincome, tvtotalincome,income,expense,tvtotalexpense,tvsavingvalue,tvmainbalance;
     ImageView add;
     DataBaseHelper dbhelper;
 
@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         tvtotalexpense=findViewById(R.id.tvtotalexpense);
         tvtotalincome=findViewById(R.id.tvtotalincome);
         tvsavingvalue=findViewById(R.id.tvsavingvalue);
+        tvmainbalance=findViewById(R.id.tvmainbalance);
         drawer_layout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         navigationview = findViewById(R.id.navigationview);
@@ -108,13 +109,22 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateui(){
 
-        if (dbhelper.getTotalIncome()>0){
-            tvtotalincome.setText("Total Income: "+dbhelper.getTotalIncome());
-        } else if (dbhelper.getTotalExpense()>0) {
-            tvtotalexpense.setText("Total Expense: "+dbhelper.getTotalExpense());
-        }else {
-            tvsavingvalue.setText(""+dbhelper.getTotalsavings());
-        }
+
+        double totalIncome = dbhelper.getTotalIncome();
+        double totalExpense = dbhelper.getTotalExpense();
+        double userInputSavings = dbhelper.getTotalsavings();
+
+        double mainBalance = totalIncome - totalExpense - userInputSavings;
+
+        tvtotalincome.setText("Total Income: " + totalIncome);
+        tvtotalexpense.setText("Total Expense: " + totalExpense);
+        tvmainbalance.setText("" + mainBalance);
+        tvsavingvalue.setText("" + userInputSavings);
+
+
+
+
+
 
     }
 

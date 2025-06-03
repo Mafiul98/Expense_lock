@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -71,13 +72,10 @@ public class Data_Insert extends AppCompatActivity {
                     dbhelper.addsavings(amount1);
                 }
 
-
                 typeSpinner.setText("");
                 reasonSpinner.setText("");
                 addnote.setText("");
                 amount.setText("");
-
-
 
 
 
@@ -108,31 +106,35 @@ public class Data_Insert extends AppCompatActivity {
         typeSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedtype = typeSpinner.getText().toString();
+                String selectedtype = types[position];
+
+
 
                 if (selectedtype.equals("Income")){
                     layout3.setVisibility(VISIBLE);
-                    reasonSpinner.setText("");
+
                     ArrayAdapter<String> reasonAdapter1 = new ArrayAdapter<>(
                             Data_Insert.this,
                             R.layout.spinner_dropdown_item,
                             reasons1
                     );
                     reasonSpinner.setAdapter(reasonAdapter1);
-
+                    reasonSpinner.setText("");
 
                 } else if (selectedtype.equals("Expense")) {
                     layout3.setVisibility(VISIBLE);
-                    reasonSpinner.setText("");
                     ArrayAdapter<String> reasonAdapter2 = new ArrayAdapter<>(
                             Data_Insert.this,
                             R.layout.spinner_dropdown_item,
                             reasons2
                     );
                     reasonSpinner.setAdapter(reasonAdapter2);
+                    reasonSpinner.setText("");
 
                 }else {
                     layout3.setVisibility(GONE);
+                    reasonSpinner.setAdapter(null);
+                    reasonSpinner.setText("");
                 }
             }
         });
