@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     public DataBaseHelper(Context context) {
+
         super(context, "expense_lock", null, 4);
     }
 
@@ -115,5 +116,40 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         return totalsavings;
     }
+
+    public double getIncomeReason(String reason){
+        double totalincome = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select amount from income where reason=?",new String[]{reason});
+        if (cursor!=null && cursor.moveToFirst()){
+            do {
+                totalincome += cursor.getDouble(0);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return totalincome;
+    }
+
+    public double getExpenseReason(String reason){
+        double totalexpense = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select amount from expense where reason=?",new String[]{reason});
+        if (cursor!=null && cursor.moveToFirst()){
+            do {
+                totalexpense += cursor.getDouble(0);
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+        return totalexpense;
+    }
+
+    public void deleteAllData() {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete("income", null, null);
+        db.delete("expense", null, null);
+        db.delete("savings", null, null);
+        db.close();
+    }
+
 
 }

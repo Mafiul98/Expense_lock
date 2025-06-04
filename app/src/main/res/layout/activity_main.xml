@@ -83,17 +83,19 @@
                 android:layout_below="@id/tvshopping"
                 android:layout_marginRight="25dp"
                 />
+
             <TextView
                 android:id="@+id/tvtravel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="travel: "
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_below="@id/tvfood"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="2dp"
                 android:layout_marginRight="25dp"
-                />
+                android:text="travel: "
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/tvhome"
                 android:layout_width="wrap_content"

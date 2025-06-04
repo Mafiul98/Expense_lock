@@ -2,6 +2,8 @@ package com.example.expenselock;
 
 import static android.view.Gravity.START;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
@@ -38,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer_layout;
     MaterialToolbar toolbar;
     NavigationView navigationview;
-    TextView tvexpense, tvincome, tvtotalincome,income,expense,tvtotalexpense,tvsavingvalue,tvmainbalance;
+    TextView  tvtotalincome,tvtotalexpense,tvsavingvalue,tvmainbalance,
+            tvsalary,tvTada,tvbusiness,tvincentive,tvextra,tvincomedue,tvshopping,tvfood,tvtravel,tvhome,
+            tvpersonal,tvexpensedue;
     ImageView add;
     DataBaseHelper dbhelper;
 
@@ -53,8 +57,18 @@ public class MainActivity extends AppCompatActivity {
                 .setAppearanceLightStatusBars(true);
         setContentView(R.layout.activity_main);
         add=findViewById(R.id.add);
-        tvexpense = findViewById(R.id.tvexpense);
-        tvincome = findViewById(R.id.tvincome);
+        tvsalary = findViewById(R.id.tvsalary);
+        tvTada = findViewById(R.id.tvTada);
+        tvbusiness = findViewById(R.id.tvbusiness);
+        tvincentive = findViewById(R.id.tvincentive);
+        tvextra = findViewById(R.id.tvextra);
+        tvincomedue = findViewById(R.id.tvincomedue);
+        tvshopping = findViewById(R.id.tvshopping);
+        tvfood = findViewById(R.id.tvfood);
+        tvtravel = findViewById(R.id.tvtravel);
+        tvhome = findViewById(R.id.tvhome);
+        tvpersonal = findViewById(R.id.tvpersonal);
+        tvexpensedue = findViewById(R.id.tvexpensedue);
         tvtotalexpense=findViewById(R.id.tvtotalexpense);
         tvtotalincome=findViewById(R.id.tvtotalincome);
         tvsavingvalue=findViewById(R.id.tvsavingvalue);
@@ -96,6 +110,31 @@ public class MainActivity extends AppCompatActivity {
                 } else if (item.getItemId() == R.id.policy) {
                     Toast.makeText(MainActivity.this, "Policy", Toast.LENGTH_LONG).show();
                     drawer_layout.closeDrawer(GravityCompat.START);
+                } else if (item.getItemId() == R.id.reset) {
+                    new AlertDialog.Builder(MainActivity.this)
+                            .setTitle("সাবধান!")
+                            .setMessage("তুমি কি সত্যিই সব ডেটা ডিলিট করতে চাও?")
+                            .setPositiveButton("হ্যাঁ", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    drawer_layout.closeDrawer(GravityCompat.START);
+                                    Toast.makeText(MainActivity.this, "সব ডেটা মুছে ফেলা হয়েছে", Toast.LENGTH_SHORT).show();
+                                    dbhelper.deleteAllData();
+                                    updateui();
+
+                                }
+                            })
+                            .setNegativeButton("না", null)
+                            .show();
+
+
+
+
+
+
+
+
+
+
                 }
 
                 return true;
@@ -113,17 +152,27 @@ public class MainActivity extends AppCompatActivity {
         double totalIncome = dbhelper.getTotalIncome();
         double totalExpense = dbhelper.getTotalExpense();
         double userInputSavings = dbhelper.getTotalsavings();
-
         double mainBalance = totalIncome - totalExpense - userInputSavings;
-
         tvtotalincome.setText("Total Income: " + totalIncome);
         tvtotalexpense.setText("Total Expense: " + totalExpense);
         tvmainbalance.setText("" + mainBalance);
         tvsavingvalue.setText("" + userInputSavings);
-
-
-
-
+//===============Income Reason===================================================
+        tvsalary.setText("Salary: "+dbhelper.getIncomeReason("Salary"));
+        tvTada.setText("T a d a: "+dbhelper.getIncomeReason("T a d a"));
+        tvbusiness.setText("Business: "+dbhelper.getIncomeReason("Business"));
+        tvincentive.setText("Incentive: "+dbhelper.getIncomeReason("Incentive"));
+        tvextra.setText("Extra: "+dbhelper.getIncomeReason("Extra"));
+        tvincomedue.setText("Due: "+dbhelper.getIncomeReason("Due"));
+//===============Income Reason End===================================================
+//===============Expense Reason======================================================
+        tvshopping.setText("Shopping: "+dbhelper.getExpenseReason("Shopping"));
+        tvfood.setText("Food: "+dbhelper.getExpenseReason("Food"));
+        tvtravel.setText("Travel: "+dbhelper.getExpenseReason("Travel"));
+        tvhome.setText("Home: "+dbhelper.getExpenseReason("Home"));
+        tvpersonal.setText("Personal: "+dbhelper.getExpenseReason("Personal"));
+        tvexpensedue.setText("Due: "+dbhelper.getExpenseReason("Due"));
+//===============Expense Reason End======================================================
 
 
     }

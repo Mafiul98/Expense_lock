@@ -3,6 +3,7 @@ package com.example.expenselock;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,7 +33,6 @@ public class Data_Insert extends AppCompatActivity {
     TextInputLayout layout3;
     TextView savebutton;
     ImageView backbutton;
-    public static boolean EXPENSE_LOCK= true;
     DataBaseHelper dbhelper;
 
     @Override
@@ -58,24 +58,38 @@ public class Data_Insert extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String value = amount.getText().toString();
-                String type = typeSpinner.getText().toString();
-                String reason = reasonSpinner.getText().toString();
-                String note = addnote.getText().toString();
-                double amount1 = Double.parseDouble(value);
 
-                if (type.equals("Income")){
-                    dbhelper.addIncome(amount1,type,reason,note);
-                } else if (type.equals("Expense")) {
-                    dbhelper.addExpense(amount1,type,reason,note);
+
+                if (amount.length()>0 && typeSpinner.length()>0 && reasonSpinner.length()>0 ){
+
+                    String value = amount.getText().toString();
+                    String type = typeSpinner.getText().toString();
+                    String reason = reasonSpinner.getText().toString();
+                    String note = addnote.getText().toString();
+                    double amount1 = Double.parseDouble(value);
+
+                    if (type.equals("Income")){
+                        dbhelper.addIncome(amount1,type,reason,note);
+                    } else if (type.equals("Expense")) {
+                        dbhelper.addExpense(amount1,type,reason,note);
+                    }else {
+                        dbhelper.addsavings(amount1);
+                    }
+
+                    typeSpinner.setText("");
+                    reasonSpinner.setText("");
+                    addnote.setText("");
+                    amount.setText("");
+
+                    Intent resultIntent = new Intent();
+                    resultIntent.putExtra("data_added", true);
+                    setResult(RESULT_OK, resultIntent);
+                    finish();
+
                 }else {
-                    dbhelper.addsavings(amount1);
+                    amount.setError("Insert Amount");
+                    Toast.makeText(Data_Insert.this,"Fill All Fields",Toast.LENGTH_LONG).show();
                 }
-
-                typeSpinner.setText("");
-                reasonSpinner.setText("");
-                addnote.setText("");
-                amount.setText("");
 
 
 
