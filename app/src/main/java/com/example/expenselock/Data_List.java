@@ -2,6 +2,7 @@ package com.example.expenselock;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.os.Build;
@@ -31,6 +32,7 @@ import java.util.HashMap;
 public class Data_List extends AppCompatActivity {
 
     TextView tvtitle;
+    ImageView imageback;
     ListView listview;
     ArrayList<HashMap<String,String>> arrayList;
     HashMap<String,String> hashMap;
@@ -47,10 +49,17 @@ public class Data_List extends AppCompatActivity {
                 .setAppearanceLightStatusBars(true);
         setContentView(R.layout.activity_data_list);
         tvtitle=findViewById(R.id.tvtitle);
+        imageback =findViewById(R.id.imageback);
         listview=findViewById(R.id.listview);
         dbhelper = new DataBaseHelper(this);
 
 
+        imageback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         loadData();
 
 
@@ -85,6 +94,8 @@ public class Data_List extends AppCompatActivity {
             TextView tvnote = myview.findViewById(R.id.tvnote);
             ImageView imageview = myview.findViewById(R.id.imageview);
             ImageView deletebutton = myview.findViewById(R.id.deletebutton);
+            ImageView editbutton = myview.findViewById(R.id.editbutton);
+
 
             hashMap = arrayList.get(position);
             String id = hashMap.get("id");
@@ -120,7 +131,7 @@ public class Data_List extends AppCompatActivity {
                 imageview.setImageResource(R.drawable.savings);
             }
 
-
+//=====================Delete Button==============================================================
 
             deletebutton.setOnClickListener(v->{
 
@@ -131,8 +142,6 @@ public class Data_List extends AppCompatActivity {
                 }else {
                     dbhelper.deleteSavings(id);
                 }
-
-
 
                 if (EXPENSE_LOCK.equals("income")){
 
@@ -184,10 +193,30 @@ public class Data_List extends AppCompatActivity {
 
             });
 
+//=====================Delete Button End==============================================================
+
+//=====================Edit Button===================================================================
+
+            editbutton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(Data_List.this,Data_Insert.class);
+                    intent.putExtra("edit_mode", true);
+                    intent.putExtra("id", id);
+                    intent.putExtra("amount", amount);
+                    intent.putExtra("type", type);
+                    intent.putExtra("reason", reason);
+                    intent.putExtra("addnote", note);
+                    intent.putExtra("category", EXPENSE_LOCK);
+                    startActivity(intent);
 
 
 
+                }
+            });
 
+//=====================Edit Button End===================================================================
 
 
 

@@ -1,5 +1,7 @@
 package com.example.expenselock;
 
+import static java.nio.file.Paths.get;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -31,65 +33,65 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public void addExpense (double amount,String type,String reason,String addnote){
+    public void addExpense(double amount, String type, String reason, String addnote) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues conval = new ContentValues();
-        conval.put("amount",amount);
-        conval.put("reason",reason);
-        conval.put("type",type);
-        conval.put("addnote",addnote);
-        conval.put("time",System.currentTimeMillis());
-        db.insert("expense",null,conval);
+        conval.put("amount", amount);
+        conval.put("reason", reason);
+        conval.put("type", type);
+        conval.put("addnote", addnote);
+        conval.put("time", System.currentTimeMillis());
+        db.insert("expense", null, conval);
     }
 
-    public void addIncome (double amount,String type,String reason,String addnote){
+    public void addIncome(double amount, String type, String reason, String addnote) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues conval = new ContentValues();
-        conval.put("amount",amount);
-        conval.put("type",type);
-        conval.put("reason",reason);
-        conval.put("addnote",addnote);
-        conval.put("time",System.currentTimeMillis());
-        db.insert("income",null,conval);
+        conval.put("amount", amount);
+        conval.put("type", type);
+        conval.put("reason", reason);
+        conval.put("addnote", addnote);
+        conval.put("time", System.currentTimeMillis());
+        db.insert("income", null, conval);
     }
 
-    public void addsavings (double amount){
+    public void addsavings(double amount) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues conval = new ContentValues();
-        conval.put("amount",amount);
-        conval.put("time",System.currentTimeMillis());
-        db.insert("savings",null,conval);
+        conval.put("amount", amount);
+        conval.put("time", System.currentTimeMillis());
+        db.insert("savings", null, conval);
     }
 
 
-    public Cursor getAllExpense(){
+    public Cursor getAllExpense() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from expense order by id desc",null);
+        Cursor cursor = db.rawQuery("select * from expense order by id desc", null);
         return cursor;
 
 
     }
 
-    public Cursor getAllIncome(){
+    public Cursor getAllIncome() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from income order by id desc",null);
+        Cursor cursor = db.rawQuery("select * from income order by id desc", null);
         return cursor;
     }
 
-    public Cursor getAllSavings(){
+    public Cursor getAllSavings() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from savings order by id desc",null);
+        Cursor cursor = db.rawQuery("select * from savings order by id desc", null);
         return cursor;
     }
 
-    public double getTotalExpense(){
+    public double getTotalExpense() {
         double totalexpense = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from expense",null);
-        if (cursor!=null & cursor.getCount()>0){
-            while (cursor.moveToNext()){
+        Cursor cursor = db.rawQuery("select * from expense", null);
+        if (cursor != null & cursor.getCount() > 0) {
+            while (cursor.moveToNext()) {
                 double amount = cursor.getDouble(1);
-                totalexpense = totalexpense+amount;
+                totalexpense = totalexpense + amount;
             }
         }
 
@@ -120,34 +122,34 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         if (cursor != null && cursor.getCount() > 0) {
             while (cursor.moveToNext()) {
                 double amount = cursor.getDouble(1);
-                totalsavings =totalsavings + amount;
+                totalsavings = totalsavings + amount;
             }
         }
         cursor.close();
         return totalsavings;
     }
 
-    public double getIncomeReason(String reason){
+    public double getIncomeReason(String reason) {
         double totalincome = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select amount from income where reason=?",new String[]{reason});
-        if (cursor!=null && cursor.moveToFirst()){
+        Cursor cursor = db.rawQuery("select amount from income where reason=?", new String[]{reason});
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 totalincome += cursor.getDouble(0);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         cursor.close();
         return totalincome;
     }
 
-    public double getExpenseReason(String reason){
+    public double getExpenseReason(String reason) {
         double totalexpense = 0;
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select amount from expense where reason=?",new String[]{reason});
-        if (cursor!=null && cursor.moveToFirst()){
+        Cursor cursor = db.rawQuery("select amount from expense where reason=?", new String[]{reason});
+        if (cursor != null && cursor.moveToFirst()) {
             do {
                 totalexpense += cursor.getDouble(0);
-            }while (cursor.moveToNext());
+            } while (cursor.moveToNext());
         }
         cursor.close();
         return totalexpense;
@@ -161,19 +163,49 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void deleteExpense(String id){
+    public void deleteExpense(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("delete from expense where id like "+id);
-    }
-    public void deleteIncome(String id){
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("delete from income where id like "+id);
+        db.execSQL("delete from expense where id like " + id);
     }
 
-    public void deleteSavings(String id){
+    public void deleteIncome(String id) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.execSQL("delete from savings where id like "+id);
+        db.execSQL("delete from income where id like " + id);
     }
 
+    public void deleteSavings(String id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from savings where id like " + id);
+    }
+//==========================Edit season=========================================================
+    public void editExpense(String id, double amount, String type, String reason, String addnote) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("amount", amount);
+        values.put("type", type);
+        values.put("reason", reason);
+        values.put("addnote", addnote);
+        db.update("expense", values, "id = ?", new String[]{id});
+
+    }
+
+    public void editIncome(String id, double amount, String type, String reason, String addnote) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("amount", amount);
+        values.put("type", type);
+        values.put("reason", reason);
+        values.put("addnote", addnote);
+        db.update("income", values, "id = ?", new String[]{id});
+    }
+
+    public void editSavings(String id, double amount) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put("amount", amount);
+        db.update("savings", values, "id = ?", new String[]{id});
+
+    }
+    //==========================Edit Season End=========================================================
 
 }

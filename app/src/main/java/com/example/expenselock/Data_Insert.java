@@ -35,13 +35,14 @@ public class Data_Insert extends AppCompatActivity {
     ImageView backbutton;
     DataBaseHelper dbhelper;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor("#ffffff"));
-        }
-        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
+        }WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
                 .setAppearanceLightStatusBars(true);
         setContentView(R.layout.activity_data_insert);
         reasonSpinner=findViewById(R.id.reasonSpinner);
@@ -52,28 +53,75 @@ public class Data_Insert extends AppCompatActivity {
         addnote=findViewById(R.id.addnote);
         amount=findViewById(R.id.amount);
         dbhelper =  new DataBaseHelper(this);
+//=====================SaveButton vs EditButton=================================================
+        Intent intent = getIntent();
+        boolean isEditMode = intent.getBooleanExtra("edit_mode", false);
+        String id = intent.getStringExtra("id");
 
+
+        if (isEditMode) {
+            double prevAmount = intent.getDoubleExtra("amount", 0);
+            String prevType = intent.getStringExtra("type");
+            String prevReason = intent.getStringExtra("reason");
+            String prevNote = intent.getStringExtra("addnote");
+
+            amount.setText(String.valueOf(prevAmount));
+            typeSpinner.setText(prevType);
+            reasonSpinner.setText(prevReason);
+            addnote.setText(prevNote);
+
+            String[] selectedReasons;
+            if (prevType.equals("Income")) {
+                selectedReasons = new String[]{"","Salary","T a d a", "Business", "Incentive","Commission", "Others", "Due"};
+            } else if (prevType.equals("Expense")) {
+                selectedReasons = new String[]{"","Shopping", "Food", "Travel", "Home","Medical", "Personal","Due"};
+            } else {
+                selectedReasons = new String[]{"","Savings"};
+            }
+
+            ArrayAdapter<String> reasonAdapter = new ArrayAdapter<>(
+                    this,
+                    R.layout.spinner_dropdown_item,
+                    selectedReasons
+            );
+            reasonSpinner.setAdapter(reasonAdapter);
+
+            savebutton.setText("Update");
+        }
 
         savebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (amount.length()>0 && typeSpinner.length()>0 && reasonSpinner.length()>0 && addnote.length()>0){
-
-                    String value = amount.getText().toString();
+                if (amount.length() > 0 && typeSpinner.length() > 0 && reasonSpinner.length() > 0 && addnote.length() > 0) {
+                    double amount1 = Double.parseDouble(amount.getText().toString());
                     String type = typeSpinner.getText().toString();
                     String reason = reasonSpinner.getText().toString();
                     String note = addnote.getText().toString();
-                    double amount1 = Double.parseDouble(value);
 
-                    if (type.equals("Income")){
-                        dbhelper.addIncome(amount1,type,reason,note);
-                    } else if (type.equals("Expense")) {
-                        dbhelper.addExpense(amount1,type,reason,note);
-                    }else {
-                        dbhelper.addsavings(amount1);
+                    if (isEditMode) {
+                        // Update existing data
+                        if (type.equals("Income")) {
+                            dbhelper.editIncome(id, amount1, type, reason, note);
+                        } else if (type.equals("Expense")) {
+                            dbhelper.editExpense(id, amount1, type, reason, note);
+                        } else {
+                            dbhelper.editSavings(id, amount1);
+                        }
+                        Toast.makeText(Data_Insert.this, "Updated successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Add new data
+                        if (type.equals("Income")) {
+                            dbhelper.addIncome(amount1, type, reason, note);
+                        } else if (type.equals("Expense")) {
+                            dbhelper.addExpense(amount1, type, reason, note);
+                        } else {
+                            dbhelper.addsavings(amount1);
+                        }
+                        Toast.makeText(Data_Insert.this, "Saved successfully", Toast.LENGTH_SHORT).show();
                     }
 
+                    // Clear and finish
                     typeSpinner.setText("");
                     reasonSpinner.setText("");
                     addnote.setText("");
@@ -84,16 +132,14 @@ public class Data_Insert extends AppCompatActivity {
                     setResult(RESULT_OK, resultIntent);
                     finish();
 
-                }else {
+                } else {
                     amount.setError("Insert Amount");
                     addnote.setError("Insert Note");
-                    Toast.makeText(Data_Insert.this,"Fill All Fields",Toast.LENGTH_LONG).show();
+                    Toast.makeText(Data_Insert.this, "Fill All Fields", Toast.LENGTH_LONG).show();
                 }
-
-
-
             }
         });
+//=====================SaveButton vs EditButton End=================================================
 
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
