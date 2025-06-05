@@ -58,8 +58,6 @@ public class Data_Insert extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 if (amount.length()>0 && typeSpinner.length()>0 && reasonSpinner.length()>0 ){
 
                     String value = amount.getText().toString();
@@ -106,8 +104,9 @@ public class Data_Insert extends AppCompatActivity {
 
 //===============================Spinner Start======================================================
         String[] types = {"Income","Expense","Savings"};
-        String[] reasons1 = {"","Salary","T a d a", "Business", "Incentive", "Extra", "Due"};
-        String[] reasons2 = {"","Shopping", "Food", "Travel", "Home", "Personal","Due"};
+        String[] reasons1 = {"","Salary","T a d a", "Business", "Incentive","Commission", "Others", "Due"};
+        String[] reasons2 = {"","Shopping", "Food", "Travel", "Home","Medical", "Personal","Due"};
+        String[] reasons3 = {"","Savings"};
 
         ArrayAdapter<String> typeAdapter = new ArrayAdapter<>(
                 this,
@@ -120,13 +119,9 @@ public class Data_Insert extends AppCompatActivity {
         typeSpinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
                 String selectedtype = types[position];
-
-
-
                 if (selectedtype.equals("Income")){
-                    layout3.setVisibility(VISIBLE);
-
                     ArrayAdapter<String> reasonAdapter1 = new ArrayAdapter<>(
                             Data_Insert.this,
                             R.layout.spinner_dropdown_item,
@@ -136,7 +131,6 @@ public class Data_Insert extends AppCompatActivity {
                     reasonSpinner.setText("");
 
                 } else if (selectedtype.equals("Expense")) {
-                    layout3.setVisibility(VISIBLE);
                     ArrayAdapter<String> reasonAdapter2 = new ArrayAdapter<>(
                             Data_Insert.this,
                             R.layout.spinner_dropdown_item,
@@ -146,8 +140,12 @@ public class Data_Insert extends AppCompatActivity {
                     reasonSpinner.setText("");
 
                 }else {
-                    layout3.setVisibility(GONE);
-                    reasonSpinner.setAdapter(null);
+                    ArrayAdapter<String> reasonAdapter3 = new ArrayAdapter<>(
+                            Data_Insert.this,
+                            R.layout.spinner_dropdown_item,
+                            reasons3
+                    );
+                    reasonSpinner.setAdapter(reasonAdapter3);
                     reasonSpinner.setText("");
                 }
             }

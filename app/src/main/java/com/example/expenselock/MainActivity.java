@@ -29,6 +29,7 @@ import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.IFillFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
@@ -40,12 +41,11 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout drawer_layout;
     MaterialToolbar toolbar;
     NavigationView navigationview;
+    ImageView add;
     TextView  tvtotalincome,tvtotalexpense,tvsavingvalue,tvmainbalance,
             tvsalary,tvTada,tvbusiness,tvincentive,tvextra,tvincomedue,tvshopping,tvfood,tvtravel,tvhome,
-            tvpersonal,tvexpensedue;
-    ImageView add;
+            tvpersonal,tvexpensedue,tvexpenselist,tvincomelist,tvsavingslist,tvmedical,tvcommission;
     DataBaseHelper dbhelper;
-
 
 
     @Override
@@ -57,6 +57,11 @@ public class MainActivity extends AppCompatActivity {
                 .setAppearanceLightStatusBars(true);
         setContentView(R.layout.activity_main);
         add=findViewById(R.id.add);
+        tvincomelist=findViewById(R.id.tvincomelist);
+        tvexpenselist=findViewById(R.id.tvexpenselist);
+        tvsavingslist=findViewById(R.id.tvsavingslist);
+        tvmedical=findViewById(R.id.tvmedical);
+        tvcommission=findViewById(R.id.tvcommission);
         tvsalary = findViewById(R.id.tvsalary);
         tvTada = findViewById(R.id.tvTada);
         tvbusiness = findViewById(R.id.tvbusiness);
@@ -87,10 +92,41 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        tvincomelist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Data_List.EXPENSE_LOCK="income";
+                startActivity(new Intent(MainActivity.this,Data_List.class));
 
 
 
+            }
+        });
 
+        tvexpenselist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Data_List.EXPENSE_LOCK="expense";
+                startActivity(new Intent(MainActivity.this,Data_List.class));
+
+
+
+            }
+        });
+
+        tvsavingslist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Data_List.EXPENSE_LOCK="savings";
+                startActivity(new Intent(MainActivity.this,Data_List.class));
+
+
+
+            }
+        });
 
 
 //============================NavigationView Start==================================================
@@ -126,15 +162,6 @@ public class MainActivity extends AppCompatActivity {
                             .setNegativeButton("না", null)
                             .show();
 
-
-
-
-
-
-
-
-
-
                 }
 
                 return true;
@@ -145,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
         updateui();
 
     }
-
+//===============================Updateui Start============================================
     public void updateui(){
 
 
@@ -156,13 +183,14 @@ public class MainActivity extends AppCompatActivity {
         tvtotalincome.setText("Total Income: " + totalIncome);
         tvtotalexpense.setText("Total Expense: " + totalExpense);
         tvmainbalance.setText("" + mainBalance);
-        tvsavingvalue.setText("" + userInputSavings);
+        tvsavingvalue.setText("Savings: " + userInputSavings);
 //===============Income Reason===================================================
         tvsalary.setText("Salary: "+dbhelper.getIncomeReason("Salary"));
         tvTada.setText("T a d a: "+dbhelper.getIncomeReason("T a d a"));
         tvbusiness.setText("Business: "+dbhelper.getIncomeReason("Business"));
         tvincentive.setText("Incentive: "+dbhelper.getIncomeReason("Incentive"));
-        tvextra.setText("Extra: "+dbhelper.getIncomeReason("Extra"));
+        tvcommission.setText("Commission: "+dbhelper.getIncomeReason("Commission"));
+        tvextra.setText("Others: "+dbhelper.getIncomeReason("Others"));
         tvincomedue.setText("Due: "+dbhelper.getIncomeReason("Due"));
 //===============Income Reason End===================================================
 //===============Expense Reason======================================================
@@ -170,12 +198,15 @@ public class MainActivity extends AppCompatActivity {
         tvfood.setText("Food: "+dbhelper.getExpenseReason("Food"));
         tvtravel.setText("Travel: "+dbhelper.getExpenseReason("Travel"));
         tvhome.setText("Home: "+dbhelper.getExpenseReason("Home"));
+        tvmedical.setText("Medical: "+dbhelper.getExpenseReason("Medical"));
         tvpersonal.setText("Personal: "+dbhelper.getExpenseReason("Personal"));
         tvexpensedue.setText("Due: "+dbhelper.getExpenseReason("Due"));
 //===============Expense Reason End======================================================
 
 
     }
+
+//===============================Updateui End============================================
 
     @Override
     protected void onPostResume() {

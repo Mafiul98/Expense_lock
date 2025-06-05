@@ -43,46 +43,42 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#ffffff"
             android:layout_marginTop="?actionBarSize"
-            android:clickable="true"
-            >
+            android:background="#ffffff"
+            android:clickable="true">
 
             <TextView
                 android:id="@+id/tvexpense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Expense"
-                android:textSize="15sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="25dp"
                 android:layout_below="@id/mainbalance"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginTop="5dp"
-                />
+                android:layout_marginRight="25dp"
+                android:text="Expense"
+                android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/tvshopping"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Shopping: "
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="25dp"
                 android:layout_below="@id/tvexpense"
-                />
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="25dp"
+                android:text="Shopping: "
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvfood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Food: "
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_below="@id/tvshopping"
+                android:layout_alignParentRight="true"
                 android:layout_marginRight="25dp"
-                />
+                android:text="Food: "
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvtravel"
@@ -91,284 +87,202 @@
                 android:layout_below="@id/tvfood"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="2dp"
                 android:layout_marginRight="25dp"
-                android:text="travel: "
+                android:text="Travel: "
                 android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvhome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Home: "
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_below="@id/tvtravel"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="25dp"
-                />
+                android:text="Home: "
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvmedical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvhome"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="25dp"
+                android:text="Medical: "
+                android:textSize="12sp" />
+
+
             <TextView
                 android:id="@+id/tvpersonal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="personal: "
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
+                android:layout_below="@id/tvmedical"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/tvhome"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="25dp"
-                />
+                android:text="personal: "
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvexpensedue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Due: "
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_below="@id/tvpersonal"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginRight="25dp"
-                />
+                android:text="Due: "
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvtotalexpense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Expense: "
-                android:textSize="14sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
                 android:layout_below="@id/tvexpensedue"
-                android:layout_marginRight="25dp"
-                />
-
-            <TextView
-                android:id="@+id/tvyear"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Year"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_below="@id/tvtotalexpense"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="30dp"
-                />
-
-            <ImageView
-                android:id="@+id/imageyear"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
                 android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/tvyear"
-                android:src="@drawable/year"
                 android:layout_marginRight="25dp"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                />
+                android:text="Total Expense: "
+                android:textSize="14sp" />
 
-            <TextView
-                android:id="@+id/tvmonth"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Month"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/imageyear"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="5dp"
-                />
-
-            <ImageView
-                android:id="@+id/imagemonth"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/tvmonth"
-                android:src="@drawable/month"
-                android:layout_marginRight="25dp"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                />
-
-            <TextView
-                android:id="@+id/tvday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Day"
-                android:textSize="18sp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/imagemonth"
-                android:layout_marginRight="25dp"
-                android:layout_marginTop="5dp"
-                />
-
-            <ImageView
-                android:id="@+id/imageday"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_below="@id/tvday"
-                android:src="@drawable/day"
-                android:layout_marginRight="25dp"
-                android:clickable="true"
-                android:foreground="?attr/selectableItemBackground"
-                />
 
             <TextView
                 android:id="@+id/tvincome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Income"
-                android:textSize="15sp"
+                android:layout_below="@id/mainbalance"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@id/mainbalance"
                 android:layout_marginTop="5dp"
-                />
+                android:text="Income"
+                android:textSize="15sp" />
+
             <TextView
                 android:id="@+id/tvsalary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Salary: "
-                android:textSize="12sp"
+                android:layout_below="@id/tvincome"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@id/tvincome"
-                />
+                android:text="Salary: "
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvTada"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="T a d a: "
-                android:textSize="12sp"
+                android:layout_below="@id/tvsalary"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                android:layout_below="@id/tvsalary"
-                />
+                android:text="T a d a: "
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/tvbusiness"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Business: "
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
                 android:layout_below="@id/tvTada"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                />
+                android:text="Business: "
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/tvincentive"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Incentive: "
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
                 android:layout_below="@id/tvbusiness"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                />
+                android:text="Incentive: "
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvcommission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvincentive"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
+                android:text="Commission: "
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvextra"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Extra: "
-                android:textSize="12sp"
+                android:layout_below="@id/tvcommission"
                 android:layout_centerVertical="true"
-                android:layout_below="@id/tvincentive"
                 android:layout_marginLeft="25dp"
-                />
+                android:text="Others: "
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvincomedue"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Due: "
-                android:textSize="12sp"
-                android:layout_centerVertical="true"
                 android:layout_below="@id/tvextra"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                />
+                android:text="Due: "
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvtotalincome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Total Income: "
-                android:textSize="14sp"
-                android:layout_centerVertical="true"
                 android:layout_below="@id/tvincomedue"
+                android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                />
+                android:text="Total Income: "
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/tvsavings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Savings"
-                android:textSize="18sp"
                 android:layout_below="@id/tvtotalincome"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
                 android:layout_marginTop="35dp"
-                android:layout_marginLeft="190dp"
-                />
+                android:layout_marginRight="25dp"
+                android:text="Savings"
+                android:textSize="15sp" />
 
-            <ImageView
-                android:id="@+id/downimage"
-                android:layout_width="20dp"
-                android:layout_height="15dp"
-                android:src="@drawable/down"
-                android:layout_below="@id/tvsavings"
-                android:layout_marginLeft="211dp"
-                />
-
-            <LinearLayout
-                android:layout_width="63dp"
+            <TextView
+                android:id="@+id/tvsavingvalue"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_below="@id/downimage"
-                android:layout_marginLeft="190dp"
-                >
-                <TextView
-                    android:id="@+id/tvsavingvalue"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20000"
-                    android:textSize="13sp"
-                    android:layout_gravity="center"
-                    />
-
-
-            </LinearLayout>
+                android:layout_below="@id/tvsavings"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="25dp"
+                android:text="Savings: "
+                android:textSize="12sp" />
 
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card1"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                app:cardElevation="3dp"
-                app:cardCornerRadius="6dp"
-                android:layout_marginLeft="25dp"
                 android:layout_below="@id/tvtotalincome"
                 android:layout_centerVertical="true"
-                android:layout_marginTop="35sp"
-                >
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="35dp"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="3dp">
 
                 <TextView
                     android:id="@+id/tvexpenselist"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Expense List"
-                    android:textSize="17sp"
-                    android:gravity="center"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    />
+                    android:gravity="center"
+                    android:text="Expense List"
+                    android:textSize="17sp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -376,24 +290,22 @@
                 android:id="@+id/card2"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                app:cardElevation="3dp"
-                app:cardCornerRadius="6dp"
-                android:layout_marginLeft="25dp"
                 android:layout_below="@id/card1"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="15sp"
-                >
+                app:cardCornerRadius="6dp"
+                app:cardElevation="3dp">
 
                 <TextView
                     android:id="@+id/tvincomelist"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Income List"
-                    android:textSize="17sp"
-                    android:gravity="center"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    />
+                    android:gravity="center"
+                    android:text="Income List"
+                    android:textSize="17sp" />
 
             </androidx.cardview.widget.CardView>
 
@@ -401,94 +313,83 @@
                 android:id="@+id/card3"
                 android:layout_width="120dp"
                 android:layout_height="40dp"
-                app:cardElevation="3dp"
-                app:cardCornerRadius="6dp"
-                android:layout_marginLeft="25dp"
                 android:layout_below="@id/card2"
                 android:layout_centerVertical="true"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="15sp"
-                >
+                app:cardCornerRadius="6dp"
+                app:cardElevation="3dp">
 
                 <TextView
                     android:id="@+id/tvsavingslist"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Savings List"
-                    android:textSize="17sp"
-                    android:gravity="center"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    />
+                    android:gravity="center"
+                    android:text="Savings List"
+                    android:textSize="17sp" />
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/mainbalance"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                app:cardElevation="3dp"
-                app:cardCornerRadius="80dp"
+                android:layout_centerHorizontal="true"
                 android:layout_gravity="center"
                 android:layout_marginTop="20sp"
-                android:layout_centerHorizontal="true"
-                >
+                app:cardCornerRadius="80dp"
+                app:cardElevation="10dp">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Main Balance"
-                    android:textSize="15sp"
-                    android:gravity="center_horizontal"
                     android:layout_marginTop="54dp"
+                    android:gravity="center_horizontal"
+                    android:text="Main Balance"
                     android:textColor="#6F000000"
-                    />
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/tvmainbalance"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:hint="0.0"
-                    android:textSize="17sp"
-                    android:gravity="center"
                     android:layout_marginTop="20dp"
+                    android:gravity="center"
+                    android:hint="0.0"
                     android:textColor="#94000000"
-                    />
+                    android:textSize="17sp" />
 
 
             </androidx.cardview.widget.CardView>
 
 
-
-
             <androidx.cardview.widget.CardView
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                app:cardElevation="3dp"
-                app:cardCornerRadius="45dp"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
                 android:layout_below="@id/card3"
                 android:layout_centerInParent="true"
                 android:layout_marginTop="35dp"
-                >
+                app:cardCornerRadius="45dp"
+                app:cardElevation="10dp">
 
 
                 <ImageView
                     android:id="@+id/add"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/plus"
+                    android:layout_gravity="center"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground"
-                    />
+                    android:src="@drawable/add" />
 
 
             </androidx.cardview.widget.CardView>
 
 
-
-
-
         </RelativeLayout>
 
-    <!--================================MainContenEnd========-->
+        <!--================================MainContenEnd========-->
         
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
     

@@ -74,6 +74,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    public Cursor getAllSavings(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from savings",null);
+        return cursor;
+    }
+
     public double getTotalExpense(){
         double totalexpense = 0;
         SQLiteDatabase db = this.getReadableDatabase();

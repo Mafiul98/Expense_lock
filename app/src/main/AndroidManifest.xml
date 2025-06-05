@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ExpenseLock"
         tools:targetApi="31">
         <activity
+            android:name=".Data_List"
+            android:exported="false" />
+        <activity
             android:name=".Data_Insert"
             android:exported="false" />
         <activity
