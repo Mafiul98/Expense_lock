@@ -1,6 +1,10 @@
 package com.example.expenselock;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,6 +20,7 @@ import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.text.SimpleDateFormat;
@@ -25,6 +30,7 @@ import java.util.HashMap;
 
 public class Data_List extends AppCompatActivity {
 
+    TextView tvtitle;
     ListView listview;
     ArrayList<HashMap<String,String>> arrayList;
     HashMap<String,String> hashMap;
@@ -34,7 +40,13 @@ public class Data_List extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#ffffff"));
+        }
+        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
+                .setAppearanceLightStatusBars(true);
         setContentView(R.layout.activity_data_list);
+        tvtitle=findViewById(R.id.tvtitle);
         listview=findViewById(R.id.listview);
         dbhelper = new DataBaseHelper(this);
 
@@ -72,6 +84,7 @@ public class Data_List extends AppCompatActivity {
             TextView tvamount = myview.findViewById(R.id.tvamount);
             TextView tvnote = myview.findViewById(R.id.tvnote);
             ImageView imageview = myview.findViewById(R.id.imageview);
+            ImageView deletebutton = myview.findViewById(R.id.deletebutton);
 
             hashMap = arrayList.get(position);
             String id = hashMap.get("id");
@@ -97,12 +110,86 @@ public class Data_List extends AppCompatActivity {
 
 
             if (EXPENSE_LOCK.equals("income")){
+                tvtitle.setText("Income List");
                 imageview.setImageResource(R.drawable.income);
             } else if (EXPENSE_LOCK.equals("expense")) {
+                tvtitle.setText("Expense list");
                 imageview.setImageResource(R.drawable.expense);
             }else {
+                tvtitle.setText("Savings List");
                 imageview.setImageResource(R.drawable.savings);
             }
+
+
+
+            deletebutton.setOnClickListener(v->{
+
+                if (EXPENSE_LOCK.equals("income")){
+                    dbhelper.deleteIncome(id);
+                } else if (EXPENSE_LOCK.equals("expense")) {
+                    dbhelper.deleteExpense(id);
+                }else {
+                    dbhelper.deleteSavings(id);
+                }
+
+
+
+                if (EXPENSE_LOCK.equals("income")){
+
+                    new AlertDialog.Builder(Data_List.this)
+                            .setTitle("Delete Income Data")
+                            .setMessage("Are you sure")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dbhelper.deleteIncome(id);
+                                    loadData();
+                                    Toast.makeText(Data_List.this,"Income Deleted",Toast.LENGTH_LONG).show();
+                                }
+                            })
+                            .setNegativeButton("No",null)
+                            .show();
+
+                } else if (EXPENSE_LOCK.equals("expense")) {
+                    new AlertDialog.Builder(Data_List.this)
+                            .setTitle("Delete Expense Data")
+                            .setMessage("Are you sure")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dbhelper.deleteExpense(id);
+                                    loadData();
+                                    Toast.makeText(Data_List.this,"Expense Deleted",Toast.LENGTH_LONG).show();
+                                }
+                            })
+                            .setNegativeButton("No",null)
+                            .show();
+                }else {
+
+                    new AlertDialog.Builder(Data_List.this)
+                            .setTitle("Delete Savings Data")
+                            .setMessage("Are you sure")
+                            .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dbhelper.deleteSavings(id);
+                                    loadData();
+                                    Toast.makeText(Data_List.this,"Savings Deleted",Toast.LENGTH_LONG).show();
+                                }
+                            })
+                            .setNegativeButton("No",null)
+                            .show();
+                }
+
+
+            });
+
+
+
+
+
+
+
 
 
             return myview;
@@ -144,11 +231,12 @@ public class Data_List extends AppCompatActivity {
                 double amount = cursor.getDouble(1);
                 String time = cursor.getString(2);
 
+
                 hashMap = new HashMap<>();
                 hashMap.put("id", String.valueOf(id));
                 hashMap.put("amount", String.valueOf(amount));
                 hashMap.put("type", "Savings"); // Fallback/default value
-                hashMap.put("reason", "-");
+                hashMap.put("reason", "Savings");
                 hashMap.put("note", "-");
                 hashMap.put("time", time);
                 arrayList.add(hashMap);

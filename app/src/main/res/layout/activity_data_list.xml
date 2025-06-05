@@ -9,11 +9,30 @@
     android:orientation="vertical"
     android:background="#FFFFFF"
     >
+<androidx.cardview.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="6dp"
+    >
+    <TextView
+        android:id="@+id/tvtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Income List"
+        android:textColor="#6F000000"
+        android:gravity="center_horizontal"
+        android:textSize="25sp"
+        android:layout_marginBottom="7dp"
+        />
+
+</androidx.cardview.widget.CardView>
+
 
     <ListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="5dp"
         />
 
 </LinearLayout>

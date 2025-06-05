@@ -58,7 +58,7 @@ public class Data_Insert extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (amount.length()>0 && typeSpinner.length()>0 && reasonSpinner.length()>0 ){
+                if (amount.length()>0 && typeSpinner.length()>0 && reasonSpinner.length()>0 && addnote.length()>0){
 
                     String value = amount.getText().toString();
                     String type = typeSpinner.getText().toString();
@@ -86,6 +86,7 @@ public class Data_Insert extends AppCompatActivity {
 
                 }else {
                     amount.setError("Insert Amount");
+                    addnote.setError("Insert Note");
                     Toast.makeText(Data_Insert.this,"Fill All Fields",Toast.LENGTH_LONG).show();
                 }
 

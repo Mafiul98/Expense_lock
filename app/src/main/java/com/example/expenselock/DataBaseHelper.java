@@ -66,6 +66,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("select * from expense order by id desc",null);
         return cursor;
+
+
     }
 
     public Cursor getAllIncome(){
@@ -76,7 +78,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     public Cursor getAllSavings(){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from savings",null);
+        Cursor cursor = db.rawQuery("select * from savings order by id desc",null);
         return cursor;
     }
 
@@ -90,7 +92,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 totalexpense = totalexpense+amount;
             }
         }
+
         return totalexpense;
+
     }
 
 
@@ -104,7 +108,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 totalincome = totalincome + amount;
             }
         }
-
+        cursor.close();
         return totalincome;
     }
 
@@ -119,7 +123,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 totalsavings =totalsavings + amount;
             }
         }
-
+        cursor.close();
         return totalsavings;
     }
 
@@ -155,6 +159,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.delete("expense", null, null);
         db.delete("savings", null, null);
         db.close();
+    }
+
+    public void deleteExpense(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from expense where id like "+id);
+    }
+    public void deleteIncome(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from income where id like "+id);
+    }
+
+    public void deleteSavings(String id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from savings where id like "+id);
     }
 
 

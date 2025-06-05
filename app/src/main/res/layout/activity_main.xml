@@ -275,13 +275,13 @@
                 app:cardElevation="3dp">
 
                 <TextView
-                    android:id="@+id/tvexpenselist"
+                    android:id="@+id/tvincomelist"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center"
-                    android:text="Expense List"
+                    android:text="Income List"
                     android:textSize="17sp" />
 
             </androidx.cardview.widget.CardView>
@@ -298,13 +298,13 @@
                 app:cardElevation="3dp">
 
                 <TextView
-                    android:id="@+id/tvincomelist"
+                    android:id="@+id/tvexpenselist"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clickable="true"
                     android:foreground="?attr/selectableItemBackground"
                     android:gravity="center"
-                    android:text="Income List"
+                    android:text="Expense List"
                     android:textSize="17sp" />
 
             </androidx.cardview.widget.CardView>
