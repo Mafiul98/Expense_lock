@@ -30,7 +30,7 @@ public class Data_Insert extends AppCompatActivity {
 
     TextInputEditText amount,addnote;
     AutoCompleteTextView typeSpinner,reasonSpinner;
-    TextInputLayout layout3;
+    TextInputLayout layout2,layout3;
     TextView savebutton;
     ImageView backbutton;
     DataBaseHelper dbhelper;
@@ -47,12 +47,15 @@ public class Data_Insert extends AppCompatActivity {
         setContentView(R.layout.activity_data_insert);
         reasonSpinner=findViewById(R.id.reasonSpinner);
         typeSpinner=findViewById(R.id.typeSpinner);
+        layout2=findViewById(R.id.layout2);
         layout3=findViewById(R.id.layout3);
         savebutton=findViewById(R.id.savebutton);
         backbutton=findViewById(R.id.backbutton);
         addnote=findViewById(R.id.addnote);
         amount=findViewById(R.id.amount);
         dbhelper =  new DataBaseHelper(this);
+
+
 //=====================SaveButton vs EditButton=================================================
         Intent intent = getIntent();
         boolean isEditMode = intent.getBooleanExtra("edit_mode", false);
@@ -89,18 +92,51 @@ public class Data_Insert extends AppCompatActivity {
             savebutton.setText("Update");
         }
 
+
         savebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (amount.length() > 0 && typeSpinner.length() > 0 && reasonSpinner.length() > 0 && addnote.length() > 0) {
-                    double amount1 = Double.parseDouble(amount.getText().toString());
-                    String type = typeSpinner.getText().toString();
-                    String reason = reasonSpinner.getText().toString();
-                    String note = addnote.getText().toString();
+                boolean isValid = true;
+                String amountStr = amount.getText().toString().trim();
+                String type = typeSpinner.getText().toString().trim();
+                String reason = reasonSpinner.getText().toString().trim();
+                String note = addnote.getText().toString().trim();
+
+                if (amountStr.isEmpty()) {
+                    amount.setError("Insert Amount");
+                    isValid = false;
+                } else {
+                    amount.setError(null);
+                }
+
+
+                if (type.isEmpty()) {
+                    layout2.setError("Select Type");
+                    isValid = false;
+                } else {
+                    layout2.setError(null);
+                }
+
+
+                if (reason.isEmpty()) {
+                    layout3.setError("Select Reason");
+                    isValid = false;
+                } else {
+                    layout3.setError(null);
+                }
+
+                if (note.isEmpty()) {
+                    addnote.setError("Please write a note");
+                    isValid = false;
+                } else {
+                    addnote.setError(null);
+                }
+
+                if (isValid) {
+                    double amount1 = Double.parseDouble(amountStr);
 
                     if (isEditMode) {
-                        // Update existing data
                         if (type.equals("Income")) {
                             dbhelper.editIncome(id, amount1, type, reason, note);
                         } else if (type.equals("Expense")) {
@@ -110,7 +146,6 @@ public class Data_Insert extends AppCompatActivity {
                         }
                         Toast.makeText(Data_Insert.this, "Updated successfully", Toast.LENGTH_SHORT).show();
                     } else {
-                        // Add new data
                         if (type.equals("Income")) {
                             dbhelper.addIncome(amount1, type, reason, note);
                         } else if (type.equals("Expense")) {
@@ -121,7 +156,7 @@ public class Data_Insert extends AppCompatActivity {
                         Toast.makeText(Data_Insert.this, "Saved successfully", Toast.LENGTH_SHORT).show();
                     }
 
-                    // Clear and finish
+
                     typeSpinner.setText("");
                     reasonSpinner.setText("");
                     addnote.setText("");
@@ -131,14 +166,12 @@ public class Data_Insert extends AppCompatActivity {
                     resultIntent.putExtra("data_added", true);
                     setResult(RESULT_OK, resultIntent);
                     finish();
-
                 } else {
-                    amount.setError("Insert Amount");
-                    addnote.setError("Insert Note");
                     Toast.makeText(Data_Insert.this, "Fill All Fields", Toast.LENGTH_LONG).show();
                 }
             }
         });
+
 //=====================SaveButton vs EditButton End=================================================
 
         backbutton.setOnClickListener(new View.OnClickListener() {

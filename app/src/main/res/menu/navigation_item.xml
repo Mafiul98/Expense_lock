@@ -9,7 +9,8 @@
             android:id="@+id/home"
             android:title="Home"
             android:icon="@drawable/home"
-            android:checkable="true"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
             />
     </group>
 
@@ -21,7 +22,8 @@
             android:id="@+id/policy"
             android:title="Policy"
             android:icon="@drawable/policy"
-            android:checkable="true"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
             />
 
     </group>
@@ -34,7 +36,8 @@
             android:id="@+id/reset"
             android:title="Reset"
             android:icon="@drawable/reset"
-            android:checkable="true"
+            android:clickable="true"
+            android:foreground="?attr/selectableItemBackground"
             />
 
     </group>

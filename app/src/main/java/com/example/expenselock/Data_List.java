@@ -135,16 +135,8 @@ public class Data_List extends AppCompatActivity {
 
             deletebutton.setOnClickListener(v->{
 
-                if (EXPENSE_LOCK.equals("income")){
-                    dbhelper.deleteIncome(id);
-                } else if (EXPENSE_LOCK.equals("expense")) {
-                    dbhelper.deleteExpense(id);
-                }else {
-                    dbhelper.deleteSavings(id);
-                }
 
                 if (EXPENSE_LOCK.equals("income")){
-
                     new AlertDialog.Builder(Data_List.this)
                             .setTitle("Delete Income Data")
                             .setMessage("Are you sure")
