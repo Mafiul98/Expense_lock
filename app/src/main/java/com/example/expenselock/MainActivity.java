@@ -31,6 +31,9 @@ import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.data.PieEntry;
 import com.github.mikephil.charting.formatter.IFillFormatter;
 import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.navigation.NavigationView;
 
@@ -39,6 +42,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     DrawerLayout drawer_layout;
+    AdView adView;
     MaterialToolbar toolbar;
     NavigationView navigationview;
     ImageView add;
@@ -81,7 +85,20 @@ public class MainActivity extends AppCompatActivity {
         drawer_layout = findViewById(R.id.drawer_layout);
         toolbar = findViewById(R.id.toolbar);
         navigationview = findViewById(R.id.navigationview);
+        adView=findViewById(R.id.adView);
         dbhelper = new DataBaseHelper(this);
+
+
+//=============================Banner ads Initialize=============================================
+
+        MobileAds.initialize(this, initializationStatus -> {});
+
+        adView = findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        adView.loadAd(adRequest);
+
+//=============================Banner ads Initialize End=============================================
+
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -207,10 +224,29 @@ public class MainActivity extends AppCompatActivity {
     }
 
 //===============================Updateui End============================================
-
+//========================Banner Ads=====================================================
     @Override
     protected void onPostResume() {
         super.onPostResume();
         updateui();
     }
+    @Override
+    protected void onPause() {
+        if (adView != null) adView.pause();
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (adView != null) adView.resume();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (adView != null) adView.destroy();
+        super.onDestroy();
+    }
+
+    //=========================================Banner Ads End===============================================
 }
