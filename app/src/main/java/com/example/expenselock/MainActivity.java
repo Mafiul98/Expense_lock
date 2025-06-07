@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     AdView adView;
     MaterialToolbar toolbar;
     NavigationView navigationview;
+    ScrollView scrollview,scrollview1;
     ImageView add;
     TextView  tvtotalincome,tvtotalexpense,tvsavingvalue,tvmainbalance,
             tvsalary,tvTada,tvbusiness,tvincentive,tvextra,tvincomedue,tvshopping,tvfood,tvtravel,tvhome,
@@ -86,7 +90,77 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         navigationview = findViewById(R.id.navigationview);
         adView=findViewById(R.id.adView);
+        scrollview=findViewById(R.id.scrollview);
+        scrollview1=findViewById(R.id.scrollview1);
         dbhelper = new DataBaseHelper(this);
+
+
+
+// =================Auto Scroolview Start====================================
+
+        Handler handler1 = new Handler();
+        int[] direction1 = {1};
+        boolean[] isScroll1Enabled = {true};
+
+        Runnable autoScroll1 = new Runnable() {
+            @Override
+            public void run() {
+                if (isScroll1Enabled[0]) {
+                    scrollview.scrollBy(0, direction1[0] * 2);
+
+                    if (!scrollview.canScrollVertically(1)) {
+                        direction1[0] = -1;
+                    } else if (!scrollview.canScrollVertically(-1)) {
+                        direction1[0] = 1;
+                    }
+                }
+                handler1.postDelayed(this, 80);
+            }
+        };
+        handler1.postDelayed(autoScroll1, 1000);
+//=================Auto Scroolview End====================================
+
+//=================Auto Scroolview1 Start====================================
+        Handler handler2 = new Handler();
+        int[] direction2 = {1};
+        boolean[] isScroll2Enabled = {true};
+
+        Runnable autoScroll2 = new Runnable() {
+            @Override
+            public void run() {
+                if (isScroll2Enabled[0]) {
+                    scrollview1.scrollBy(0, direction2[0] * 3); // অন্য স্পিড
+
+                    if (!scrollview1.canScrollVertically(1)) {
+                        direction2[0] = -1;
+                    } else if (!scrollview1.canScrollVertically(-1)) {
+                        direction2[0] = 1;
+                    }
+                }
+                handler2.postDelayed(this, 80);
+            }
+        };
+        handler2.postDelayed(autoScroll2, 1000);
+//=================Auto Scroolview1 End====================================
+
+//=======================Scrollview On/Off===================================
+        scrollview.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                isScroll1Enabled[0] = !isScroll1Enabled[0];
+            }
+            return false;
+        });
+
+        scrollview1.setOnTouchListener((v, event) -> {
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                isScroll2Enabled[0] = !isScroll2Enabled[0];
+            }
+            return false;
+        });
+//=======================Scrollview On/Off===================================
+
+
+//=================Auto Scroolview End====================================
 
 
 //=============================Banner ads Initialize=============================================
@@ -99,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
 
 //=============================Banner ads Initialize End=============================================
 
-
+//=========================Button Start=========================================================
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -144,7 +218,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
+//=========================Button End=========================================================
 
 //============================NavigationView Start==================================================
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(

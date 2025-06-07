@@ -58,88 +58,156 @@
                 android:text="Expense"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/tvshopping"
+            <!--====================Scrollview1 Start===========================-->
+
+            <ScrollView
+                android:id="@+id/scrollview1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvexpense"
+                android:layout_height="118dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
+                android:layout_below="@+id/tvexpense"
                 android:layout_marginRight="25dp"
-                android:text="Shopping: "
-                android:textSize="12sp" />
-
-            <TextView
-                android:id="@+id/tvfood"
+                >
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvshopping"
-                android:layout_alignParentRight="true"
-                android:layout_marginRight="25dp"
-                android:text="Food: "
-                android:textSize="12sp" />
+                android:orientation="vertical"
 
-            <TextView
-                android:id="@+id/tvtravel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvfood"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="25dp"
-                android:text="Travel: "
-                android:textSize="12sp" />
+                >
+                <TextView
+                    android:id="@+id/tvshopping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvexpense"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="Shopping: "
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    />
 
-            <TextView
-                android:id="@+id/tvhome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvtravel"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="25dp"
-                android:text="Home: "
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvfood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvshopping"
+                    android:layout_alignParentRight="true"
+                    android:text="Food: "
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    />
 
-            <TextView
-                android:id="@+id/tvmedical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvhome"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="25dp"
-                android:text="Medical: "
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvtravel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvfood"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="Travel: "
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    />
+
+                <TextView
+                    android:id="@+id/tvhome"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvtravel"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="Home: "
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    />
+
+                <TextView
+                    android:id="@+id/tvmedical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvhome"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="Medical: "
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    />
 
 
-            <TextView
-                android:id="@+id/tvpersonal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvmedical"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="25dp"
-                android:text="personal: "
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvpersonal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvmedical"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="personal: "
+                    android:textSize="12sp"
+                    android:layout_gravity="right"
+                    />
 
-            <TextView
-                android:id="@+id/tvexpensedue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvpersonal"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:layout_marginRight="25dp"
-                android:text="Due: "
-                android:textSize="12sp" />
+                <TextView
+                    android:id="@+id/tvexpensedue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvpersonal"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="Due: "
+                    android:textSize="12sp"
+                    android:layout_gravity="right"/>
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvpersonal"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="Due: "
+                    android:textSize="12sp"
+                    android:layout_gravity="right"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvpersonal"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="Due: "
+                    android:textSize="12sp"
+                    android:layout_gravity="right"/>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvpersonal"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:text="Due: "
+                    android:textSize="12sp"
+                    android:layout_gravity="right"/>
+
+
+            </LinearLayout>
+
+
+            </ScrollView>
+
+
+
+
+
+            <!--====================Scrollview Start===========================-->
 
             <TextView
                 android:id="@+id/tvtotalexpense"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvexpensedue"
+                android:layout_below="@id/scrollview1"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="25dp"
@@ -157,81 +225,128 @@
                 android:text="Income"
                 android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/tvsalary"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvincome"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
-                android:text="Salary: "
-                android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tvTada"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvsalary"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
-                android:text="T a d a: "
-                android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tvbusiness"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvTada"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
-                android:text="Business: "
-                android:textSize="12sp" />
+<!--====================Scrollview Start===========================-->
 
-            <TextView
-                android:id="@+id/tvincentive"
+            <ScrollView
+                android:id="@+id/scrollview"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvbusiness"
+                android:layout_height="118dp"
+                android:layout_below="@+id/tvincome"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
-                android:text="Incentive: "
-                android:textSize="12sp" />
+                >
 
-            <TextView
-                android:id="@+id/tvcommission"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvincentive"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
-                android:text="Commission: "
-                android:textSize="12sp" />
+                <LinearLayout
+                    android:id="@+id/incomelayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
 
-            <TextView
-                android:id="@+id/tvextra"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvcommission"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
-                android:text="Others: "
-                android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tvsalary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvincome"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:text="Salary: "
+                        android:textSize="12sp" />
 
-            <TextView
-                android:id="@+id/tvincomedue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/tvextra"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="25dp"
-                android:text="Due: "
-                android:textSize="12sp" />
+                    <TextView
+                        android:id="@+id/tvTada"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvsalary"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:text="T a d a: "
+                        android:textSize="12sp" />
 
+                    <TextView
+                        android:id="@+id/tvbusiness"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvTada"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:text="Business: "
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvincentive"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvbusiness"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:text="Incentive: "
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvcommission"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvincentive"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:text="Commission: "
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvextra"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvcommission"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:text="Others: "
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvincomedue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvextra"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:text="Due: "
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvcommission"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:text="Others: "
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvextra"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="25dp"
+                        android:text="Due: "
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+
+
+
+
+
+            </ScrollView>
+
+            <!--====================Listview End===========================-->
             <TextView
                 android:id="@+id/tvtotalincome"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvincomedue"
+                android:layout_below="@id/scrollview"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
                 android:text="Total Income: "
@@ -241,7 +356,7 @@
                 android:id="@+id/tvsavings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tvtotalincome"
+                android:layout_below="@id/scrollview"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="35dp"
@@ -268,7 +383,7 @@
                 android:layout_below="@id/tvtotalincome"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="35dp"
+                android:layout_marginTop="25dp"
                 app:cardCornerRadius="6dp"
                 app:cardElevation="3dp">
 
